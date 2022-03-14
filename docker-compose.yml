@@ -24,7 +24,7 @@ services:
       MYSQL_DATABASE: nodedb
       MYSQL_ROOT_PASSWORD: root
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
     networks:
       - nodenet
 
@@ -35,7 +35,7 @@ services:
     ports:
       - "8080:80" 
     volumes:
-      - ./nginx:/etc/nginx/conf.d
+      - ./docker-compose/nginx:/etc/nginx/conf.d
     depends_on:
       - app
     networks:
